@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>디자인 트렌드 리포트</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="drift drift-1">Design Trend.</span>
+    <span class="drift drift-2">Design Trend.</span>
+    <span class="drift drift-3">Design Trend.</span>
+  </div>
+  <div class="hero-inner">
+    <p class="eyebrow">나만의 디자인 트렌드 아카이브</p>
+    <h1>디자인 트렌드 리포트</h1>
+    <p class="hero-sub">원할 때 부르면, 오늘의 흐름이 한 장의 리포트로 정리돼요.</p>
+    <a id="todayBtn" class="btn-today" href="#">오늘 트렌드 보기</a>
+  </div>
+</section>
+
+<main class="wrap">
+  <section class="past-section">
+    <h2>지난 트렌드 보기</h2>
+    <p class="past-sub">달력에서 날짜를 고르거나, 카드를 넘겨 지난 호를 다시 보세요.</p>
+    <div class="past-grid">
+      <div class="calendar">
+        <div class="cal-head">
+          <button id="calPrev" aria-label="이전 달">‹</button>
+          <strong id="calLabel"></strong>
+          <button id="calNext" aria-label="다음 달">›</button>
+        </div>
+        <div class="cal-grid" id="calDow"></div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+      <div class="carousel">
+        <div class="carousel-track" id="carTrack"></div>
+        <div class="carousel-btns">
+          <button id="carPrev">‹ 이전</button>
+          <button id="carNext">다음 ›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="assets/issues.js"></script>
+<script>
+const ISSUES = (window.ISSUES || []).slice();
+
+// 최신순 정렬(날짜 내림차순)
+ISSUES.sort((a, b) => a.date < b.date ? 1 : -1);
+const issueByDate = new Map(ISSUES.map(i => [i.date, i]));
+const pad = n => String(n).padStart(2, "0");
+const todayStr = (() => { const d = new Date(); return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; })();
+
+// 오늘 버튼
+(function renderToday() {
+  const btn = document.getElementById("todayBtn");
+  if (issueByDate.has(todayStr)) {
+    btn.href = `issues/${todayStr}.html`;
+    btn.textContent = "오늘 트렌드 보기";
+  } else if (ISSUES.length) {
+    btn.href = `issues/${ISSUES[0].date}.html`;
+    btn.textContent = `최신 트렌드 보기 (${ISSUES[0].date})`;
+  } else {
+    btn.classList.add("is-disabled");
+    btn.textContent = "아직 리포트가 없어요 — 채팅에 /디자인트렌드 라고 불러주세요";
+  }
+})();
+
+// 달력
+const DOW = ["일","월","화","수","목","금","토"];
+let viewYear, viewMonth;
+(function initCal() {
+  const base = ISSUES.length ? ISSUES[0].date.split("-") : todayStr.split("-");
+  viewYear = +base[0]; viewMonth = +base[1] - 1;
+  const dow = document.getElementById("calDow");
+  dow.innerHTML = DOW.map(d => `<div class="cal-dow">${d}</div>`).join("");
+  renderCalendar();
+})();
+function renderCalendar() {
+  document.getElementById("calLabel").textContent = `${viewYear}년 ${viewMonth+1}월`;
+  const first = new Date(viewYear, viewMonth, 1).getDay();
+  const days = new Date(viewYear, viewMonth+1, 0).getDate();
+  let cells = "";
+  for (let i = 0; i < first; i++) cells += `<div class="cal-day"></div>`;
+  for (let d = 1; d <= days; d++) {
+    const ds = `${viewYear}-${pad(viewMonth+1)}-${pad(d)}`;
+    if (issueByDate.has(ds)) cells += `<div class="cal-day has-issue" onclick="location.href='issues/${ds}.html'">${d}</div>`;
+    else cells += `<div class="cal-day">${d}</div>`;
+  }
+  document.getElementById("calGrid").innerHTML = cells;
+}
+document.getElementById("calPrev").onclick = () => { if (--viewMonth < 0) { viewMonth = 11; viewYear--; } renderCalendar(); };
+document.getElementById("calNext").onclick = () => { if (++viewMonth > 11) { viewMonth = 0; viewYear++; } renderCalendar(); };
+
+// 카드 캐러셀
+(function renderCarousel() {
+  const track = document.getElementById("carTrack");
+  if (!ISSUES.length) { track.innerHTML = `<div class="empty-state">아직 지난 호가 없어요.</div>`; return; }
+  track.innerHTML = ISSUES.map(i => `
+    <a class="card" href="issues/${i.date}.html">
+      <img src="${i.cover}" alt="" onerror="this.style.visibility='hidden'">
+      <div class="card-body"><div class="card-date">${i.date}</div><div class="card-title">${i.title}</div></div>
+    </a>`).join("");
+})();
+document.getElementById("carPrev").onclick = () => document.getElementById("carTrack").scrollBy({left: -256, behavior:"smooth"});
+document.getElementById("carNext").onclick = () => document.getElementById("carTrack").scrollBy({left: 256, behavior:"smooth"});
+</script>
+<script src="assets/cursor.js"></script>
+</body>
+</html>
