@@ -18,6 +18,8 @@
    - **카드뉴스**: 인스타그램 캐러셀·소셜 카드뉴스 트렌드(포맷·사이즈·슬라이드 구성·참여 전략). 소셜 디자인 매체·Behance 캐러셀 사례 참고.
    - 각 카테고리는 3블록: ① 지금 주목받는 스타일·요소(+예시 이미지) ② 사람들의 반응 ③ 👉 내가 참고할 부분(`takeaway`)
    - **이미지 출처 필수**: 예시 이미지는 `<figure class="ic">`로 감싸고 바로 아래 `<figcaption class="img-credit"><a href="출처URL" target="_blank">출처: 이름 ↗</a></figcaption>`(회색 작은 링크 캡션)을 단다. 출처 없는 이미지는 쓰지 않는다.
+   - 표시 이미지는 링크 클릭 시 보이는 **실제 작업과 일치**해야 한다(Behance는 `project_modules` 이미지 URL 사용). 잘린 커버 썸네일은 쓰지 않는다.
+   - **번호 나열(①②③ / 1,2,3)은 `<ul class="enum">`로 번호마다 한 줄씩** 나눈다.
    - **타이포그래피**엔 "지금 뜨는 폰트" 리스트(`font-item`) 포함 — Google Fonts·눈누·Adobe Fonts 등에서 조회·다운로드 높은 폰트. **없는 수치는 지어내지 말 것.**
    - 참고 소스: Behance, Typewolf, Creative Boom, Kittl, Envato, Lummi, AND Academy, httpster, wwit.design, gdweb, 눈누 등 + 웹.
    - "예쁨 ≠ 인기"를 구분해 **사람들의 반응/인기 신호**도 담는다.

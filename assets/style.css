@@ -171,6 +171,9 @@ body {
 .category[open] { padding-bottom: 28px; }
 .block { margin: 22px 0; }
 .block-label { display: block; font-size: 17px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+/* 번호 나열(①②③ / 1,2,3)은 번호마다 한 줄씩 */
+.block .enum { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.block .enum li { font-size: 17px; line-height: 1.65; }
 .block .imgs { display: flex; flex-wrap: wrap; gap: 16px; margin: 12px 0; }
 .block .imgs figure.ic { margin: 0; width: 240px; max-width: 100%; }
 .block .imgs img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line); background: var(--line); display: block; }
