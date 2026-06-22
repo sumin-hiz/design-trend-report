@@ -31,7 +31,7 @@
     <div class="photo-cal">
       <div class="pcal-head">
         <button id="calPrev" aria-label="이전 달">‹</button>
-        <strong id="calLabel"></strong>
+        <strong id="calLabel" title="오늘로 이동"></strong>
         <button id="calNext" aria-label="다음 달">›</button>
       </div>
       <div class="pcal-dow" id="calDow"></div>
@@ -94,6 +94,8 @@ function renderCalendar() {
 }
 document.getElementById("calPrev").onclick = () => { if (--viewMonth < 0) { viewMonth = 11; viewYear--; } renderCalendar(); };
 document.getElementById("calNext").onclick = () => { if (++viewMonth > 11) { viewMonth = 0; viewYear++; } renderCalendar(); };
+// 월 라벨 클릭 → 오늘(이번 달)로 이동
+document.getElementById("calLabel").onclick = () => { const d = new Date(); viewYear = d.getFullYear(); viewMonth = d.getMonth(); renderCalendar(); };
 </script>
 <script src="assets/cursor.js"></script>
 </body>

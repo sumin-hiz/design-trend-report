@@ -104,7 +104,8 @@ body {
 /* ===== 사진 달력 (지난 트렌드) ===== */
 .photo-cal { max-width: 720px; margin: 0 auto; }
 .pcal-head { display: flex; align-items: center; justify-content: center; gap: 20px; margin: 6px 0 30px; }
-.pcal-head strong { font-family: var(--font-display); font-weight: 600; font-size: 26px; letter-spacing: -.01em; min-width: 150px; text-align: center; }
+.pcal-head strong { font-family: var(--font-display); font-weight: 600; font-size: 26px; letter-spacing: -.01em; min-width: 150px; text-align: center; cursor: pointer; transition: color .15s ease; }
+.pcal-head strong:hover { color: var(--accent); }
 .pcal-head button { border: none; background: none; font-size: 24px; line-height: 1; cursor: pointer; color: var(--muted); padding: 4px 8px; border-radius: 8px; }
 .pcal-head button:hover { color: var(--ink); }
 .pcal-dow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-bottom: 16px; }
