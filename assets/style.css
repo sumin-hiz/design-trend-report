@@ -53,7 +53,7 @@ body {
 @keyframes drift3 { 0% { transform: translateX(0); opacity: 0; } 26% { opacity: .6; } 72% { opacity: .3; } 100% { transform: translateX(128vw); opacity: 0; } }
 
 .hero-inner { position: relative; z-index: 2; padding: 80px 24px; max-width: 840px; }
-.eyebrow { font-size: 14px; font-weight: 700; letter-spacing: .04em; color: var(--accent); margin: 0 0 18px; }
+.eyebrow { font-size: clamp(17px, 2.4vw, 22px); font-weight: 700; letter-spacing: .02em; color: var(--accent); margin: 0 0 18px; }
 .hero h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(36px, 5.2vw, 66px); line-height: 1.08; letter-spacing: -.02em; margin: 0; }
 .hero-sub { font-size: clamp(16px, 2vw, 20px); color: var(--muted); margin: 22px 0 44px; }
 
