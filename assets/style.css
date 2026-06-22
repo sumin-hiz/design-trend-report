@@ -186,8 +186,13 @@ body {
 .fgroup { font-weight: 800; font-size: 14px; color: var(--ink); margin: 18px 0 8px; display: flex; align-items: center; gap: 8px; }
 .fgroup::before { content: ""; width: 14px; height: 14px; border-radius: 4px; background: var(--accent); flex: none; }
 .fgroup:first-child { margin-top: 4px; }
-.font-item { display: flex; justify-content: space-between; gap: 12px; padding: 11px 15px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; }
+.font-item { display: block; padding: 12px 15px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; }
+.fi-head { display: flex; justify-content: space-between; gap: 12px; align-items: baseline; }
 .font-item .meta { color: var(--muted); font-size: 13px; white-space: nowrap; }
+.fi-preview { margin-top: 9px; font-size: 24px; line-height: 1.15; color: var(--ink); letter-spacing: -.01em; }
+.fi-preview.na { font-size: 13px; color: var(--muted); margin-top: 8px; letter-spacing: 0; }
+.fi-preview.na a { color: var(--muted); text-decoration: underline; text-underline-offset: 2px; }
+.fi-preview.na a:hover { color: var(--accent); }
 .source-link { font-size: 13px; color: var(--accent); }
 .report-nav { margin-top: 44px; }
 .report-nav a { color: var(--muted); text-decoration: none; }

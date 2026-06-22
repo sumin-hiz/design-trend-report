@@ -21,6 +21,7 @@
    - 표시 이미지는 링크 클릭 시 보이는 **실제 작업과 일치**해야 한다(Behance는 `project_modules` 이미지 URL 사용). 잘린 커버 썸네일은 쓰지 않는다.
    - **번호 나열(①②③ / 1,2,3)은 `<ul class="enum">`로 번호마다 한 줄씩** 나눈다.
    - **타이포그래피**엔 "지금 뜨는 폰트" 리스트(`font-item`) 포함 — Google Fonts·눈누·Adobe Fonts 등에서 조회·다운로드 높은 폰트. **없는 수치는 지어내지 말 것.** 폰트는 **제목용(디스플레이)/본문용** 두 그룹으로 나눠 각 그룹 앞에 `<p class="fgroup">제목용 (디스플레이)</p>` / `<p class="fgroup">본문용</p>` 라벨을 둔다.
+   - **폰트 미리보기**: 각 `font-item`은 `<div class="fi-head">…</div>` + 미리보기 한 줄. 무료 임베드 가능 폰트는 `<head>`에 link로 불러와 `<div class="fi-preview" style="font-family:'폰트명'">Aa Gg — Design Trend 2026</div>`로 실제 렌더(한글은 한글 샘플), 유료/불가 폰트는 `<div class="fi-preview na"><a href="제공처 URL">제공처에서 미리보기 ↗</a></div>` 링크만 단다.
    - 참고 소스: Behance, Typewolf, Creative Boom, Kittl, Envato, Lummi, AND Academy, httpster, wwit.design, gdweb, 눈누 등 + 웹.
    - "예쁨 ≠ 인기"를 구분해 **사람들의 반응/인기 신호**도 담는다.
 
