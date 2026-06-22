@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;700&family=Inter:wght@400;600&family=Poppins:wght@400;600&family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&family=Inclusive+Sans&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
 <link rel="stylesheet" href="../assets/style.css">
-</head><body>
+</head><body data-date="2026-06-22">
 <div class="report-bg" aria-hidden="true"></div>
 <div class="report-layout">
   <aside class="report-side">
@@ -257,19 +257,6 @@
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
 </button>
 <script src="../assets/issues.js"></script>
-<script>
-  const CURRENT_DATE = "2026-06-22";
-  const list = document.getElementById("reportList");
-  (window.ISSUES || []).slice().sort((a, b) => a.date < b.date ? 1 : -1).forEach(i => {
-    const a = document.createElement("a");
-    a.href = `${i.date}.html`;
-    a.innerHTML = `<span class="ri-body"><span class="ri-title">${i.title}</span><span class="ri-date">${i.date}</span></span>`;
-    if (i.date === CURRENT_DATE) a.className = "active";
-    list.appendChild(a);
-  });
-  const topBtn = document.getElementById("topBtn");
-  addEventListener("scroll", () => topBtn.classList.toggle("show", scrollY > 320));
-  topBtn.addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
-</script>
+<script src="../assets/report.js"></script>
 <script src="../assets/cursor.js"></script>
 </body></html>

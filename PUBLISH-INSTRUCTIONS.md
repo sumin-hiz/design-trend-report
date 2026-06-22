@@ -30,7 +30,7 @@
    - `report-summary-title`: 이 호를 한 문장으로 요약한 **대제목**. 의미 단위로 `<br>` 줄바꿈. 날짜·"…흐름" 같은 부가 소제목 금지.
    - `report-date`: `<DATE>`
    - 카테고리 본문(분석·폰트·반응·takeaway·출처)
-   - 맨 아래 스크립트의 `const CURRENT_DATE = "<DATE>";`
+   - `<body data-date="<DATE>">`의 날짜 (왼쪽 목록·현재 호 표시에 쓰임)
    - 예시 이미지는 **핫링크 가능한 https URL**, `<img ... loading="lazy" onerror="this.style.display='none'">`.
 
 5. **호 목록 갱신** `assets/issues.js`: `/* ISSUES_START */` ~ `/* ISSUES_END */` 사이
