@@ -117,12 +117,12 @@ body {
   position: relative; width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
   display: flex; align-items: center; justify-content: center; text-decoration: none;
   background: linear-gradient(135deg, #7b6cff, #4d9fff);
-  box-shadow: 0 7px 18px -9px rgba(20,20,60,.45); transition: transform .15s ease;
+  box-shadow: none; transition: box-shadow .2s ease;
 }
 .pcal-day img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
 .pcal-day::after { content: ""; position: absolute; inset: 0; background: var(--accent); opacity: 0; transition: opacity .2s ease; z-index: 1; }
-.pcal-day:hover::after { opacity: 1; }
-.pcal-day:hover { transform: translateY(-2px); }
+.pcal-day:hover::after { opacity: .8; }
+.pcal-day:hover { box-shadow: 0 0 18px -9px rgba(20,20,60,.45); }
 .pcal-day .num { position: relative; z-index: 2; color: #fff; font-weight: 700; text-shadow: 0 1px 5px rgba(0,0,0,.45); }
 
 /* ===== 리포트 페이지 (2단: 왼쪽 목차 / 오른쪽 본문) ===== */
