@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>카드뉴스 · 디자인 트렌드 2026-06-22</title>
+<link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  html, body { height: 100%; margin: 0; overflow: hidden; background: #0c0e1a; }
+  .deck {
+    display: flex; height: 100dvh; overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .deck::-webkit-scrollbar { display: none; }
+  .card {
+    flex: 0 0 100vw; height: 100dvh; scroll-snap-align: center; position: relative;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px 28px calc(96px + env(safe-area-inset-bottom)); overflow: hidden;
+    background: var(--bg);
+  }
+  .card-inner { position: relative; z-index: 2; width: 100%; max-width: 460px; }
+  /* 배경 거대 숫자 워터마크 */
+  .wm {
+    position: absolute; z-index: 0; right: -4vw; bottom: 2vh; margin: 0;
+    font-family: var(--font-display); font-weight: 600; font-size: 58vw; line-height: .8;
+    color: transparent; -webkit-text-stroke: 2px rgba(91,75,240,.10); pointer-events: none;
+  }
+  .eyebrow2 { font-size: 13px; font-weight: 700; letter-spacing: .06em; color: var(--accent); margin: 0 0 12px; }
+  .ctitle { font-family: var(--font-display); font-weight: 600; font-size: clamp(28px, 8.4vw, 40px); line-height: 1.16; letter-spacing: -.02em; margin: 0; }
+  .clist { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-direction: column; gap: 15px; }
+  .clist li { font-family: 'SUITE Variable', sans-serif; font-size: 17px; line-height: 1.5; padding-left: 23px; position: relative; color: var(--ink); }
+  .clist li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .clist li strong { font-weight: 800; }
+  .ctake { margin-top: 22px; background: #f1efff; border-left: 4px solid var(--accent); padding: 14px 17px; border-radius: 0 12px 12px 0; font-family: 'SUITE Variable', sans-serif; font-size: 16px; line-height: 1.55; }
+  .ctake b { color: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { display: inline-flex; align-items: center; gap: 7px; font-family: 'SUITE Variable', sans-serif; font-size: 13px; padding: 6px 12px; background: #fff; border: 1px solid var(--line); border-radius: 999px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; flex: none; }
+  .cardimg { width: 100%; height: 168px; object-fit: cover; border-radius: 16px; margin-top: 20px; border: 1px solid var(--line); }
+
+  /* 표지 / 마지막 카드 — 그라데이션 히어로 */
+  .cover { background: linear-gradient(160deg, #eef0fb 0%, #e6ebff 55%, #efe9ff 100%); }
+  .cover .kicker { font-size: 14px; font-weight: 700; letter-spacing: .04em; color: var(--accent); margin: 0 0 16px; }
+  .cover h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(34px, 10vw, 52px); line-height: 1.12; letter-spacing: -.025em; margin: 0; }
+  .cover .meta { margin-top: 24px; font-family: 'SUITE Variable', sans-serif; color: var(--muted); font-size: 15px; }
+  .cover .swipe { margin-top: 30px; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: var(--accent); font-weight: 700; animation: nudge 1.4s ease-in-out infinite; }
+  @keyframes nudge { 0%,100% { transform: translateX(0); } 50% { transform: translateX(7px); } }
+  .outro { background: linear-gradient(160deg, #efe9ff 0%, #e6ebff 50%, #eef0fb 100%); text-align: center; }
+  .outro h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(26px, 8vw, 36px); margin: 0 0 18px; letter-spacing: -.02em; }
+  .outro p { font-family: 'SUITE Variable', sans-serif; color: var(--muted); font-size: 16px; margin: 0 0 26px; }
+  .outro a.btn { display: inline-block; background: linear-gradient(120deg,#6a5cff,#5d7cff,#4d9fff,#5d7cff,#6a5cff); background-size: 300% 100%; animation: ctaFlow 7s ease infinite; color: #fff; text-decoration: none; font-family: var(--font-display); font-weight: 600; font-size: 18px; padding: 16px 34px; border-radius: 999px; box-shadow: 0 14px 36px -12px rgba(91,75,240,.6); }
+
+  .brandtag { position: absolute; left: 28px; bottom: calc(64px + env(safe-area-inset-bottom)); z-index: 2; font-family: 'SUITE Variable', sans-serif; font-size: 12px; color: var(--muted); }
+
+  /* 진행 표시 (점) */
+  .progress { position: fixed; left: 0; right: 0; bottom: calc(26px + env(safe-area-inset-bottom)); z-index: 10; display: flex; gap: 7px; justify-content: center; pointer-events: none; }
+  .progress span { width: 7px; height: 7px; border-radius: 50%; background: rgba(12,14,26,.18); transition: width .25s ease, background .25s ease; }
+  .progress span.on { width: 22px; border-radius: 99px; background: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- 표지 -->
+  <section class="card cover">
+    <div class="card-inner">
+      <p class="kicker">디자인 트렌드 리포트 · 카드뉴스</p>
+      <h1>정제됨을 거부하는<br>손맛과 개성의 디자인</h1>
+      <p class="meta">2026.06.22 · 타이포 / 그래픽 / 웹·앱 / 컬러</p>
+      <p class="swipe">밀어서 넘기기 →</p>
+    </div>
+  </section>
+
+  <!-- 01 타이포그래피 -->
+  <section class="card">
+    <p class="wm" aria-hidden="true">01</p>
+    <div class="card-inner">
+      <p class="eyebrow2">01 · 타이포그래피</p>
+      <h2 class="ctitle">개성 주도 서체의 시대</h2>
+      <ul class="clist">
+        <li>중립 그로테스크 → <strong>개성 있는 서체</strong>로 이동</li>
+        <li><strong>접근성</strong>(넓은 카운터·명확한 글자꼴)이 선택 기준</li>
+        <li>뜨는 폰트: Helvetica · Poppins · Inter · Druk · Degular / 한글 Pretendard</li>
+      </ul>
+      <div class="ctake">👉 본문은 Inter·Pretendard로 가독성, <b>헤드라인엔 개성형 1종</b>으로 캐릭터.</div>
+    </div>
+    <p class="brandtag">디자인 트렌드 리포트 · 2026.06.22</p>
+  </section>
+
+  <!-- 02 메인비주얼 그래픽 -->
+  <section class="card">
+    <p class="wm" aria-hidden="true">02</p>
+    <div class="card-inner">
+      <p class="eyebrow2">02 · 메인비주얼 그래픽</p>
+      <h2 class="ctitle">사람 대 AI, 손맛의 반격</h2>
+      <ul class="clist">
+        <li>AI의 매끈함에 대한 반작용 → <strong>네이브·펑크 그런지·그레이니 블러</strong></li>
+        <li>컨셉형도 인기: 블루프린트 · 서베일런스 · 퓨처 미디블</li>
+      </ul>
+      <img class="cardimg" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/efbb9b240332059.693c02356804b.jpg" alt="네이브 디자인 예시" loading="lazy" onerror="this.style.display='none'">
+      <div class="ctake">👉 키비주얼에 <b>그레인·질감 한 겹</b>만 얹어도 "사람이 만든 느낌".</div>
+    </div>
+    <p class="brandtag">디자인 트렌드 리포트 · 2026.06.22</p>
+  </section>
+
+  <!-- 03 웹 & 앱 디자인 -->
+  <section class="card">
+    <p class="wm" aria-hidden="true">03</p>
+    <div class="card-inner">
+      <p class="eyebrow2">03 · 웹 &amp; 앱 디자인</p>
+      <h2 class="ctitle">예쁨보다 성과, 그리고 접근성</h2>
+      <ul class="clist">
+        <li><strong>비즈니스 목표형 디자인</strong> — 지표와 정렬</li>
+        <li>GenUI · 음성/대화형 · 모바일 셀프서비스 확산</li>
+        <li><strong>접근성(WCAG 2.2)</strong> 유럽 법적 의무화 → 필수</li>
+      </ul>
+      <div class="ctake">👉 "이 요소가 <b>어떤 지표</b>를 돕나?" + 대비·터치타깃·포커스 기본기.</div>
+    </div>
+    <p class="brandtag">디자인 트렌드 리포트 · 2026.06.22</p>
+  </section>
+
+  <!-- 04 컬러 조합 -->
+  <section class="card">
+    <p class="wm" aria-hidden="true">04</p>
+    <div class="card-inner">
+      <p class="eyebrow2">04 · 컬러 조합</p>
+      <h2 class="ctitle">어스톤 × 홀로그래픽</h2>
+      <ul class="clist">
+        <li>따뜻한 <strong>어스톤</strong> — 테라코타·버건디·카키</li>
+        <li>빛나는 <strong>홀로그래픽 파스텔</strong> — 젤리민트·블루아우라</li>
+      </ul>
+      <div class="chips">
+        <span class="chip"><span class="dot" style="background:#B96247"></span>#B96247</span>
+        <span class="chip"><span class="dot" style="background:#753572"></span>#753572</span>
+        <span class="chip"><span class="dot" style="background:#94D4C3"></span>#94D4C3</span>
+        <span class="chip"><span class="dot" style="background:#C6F1FF"></span>#C6F1FF</span>
+      </div>
+      <div class="ctake">👉 따뜻한 바탕 + <b>빛나는 포인트 5~10%</b> 조합.</div>
+    </div>
+    <p class="brandtag">디자인 트렌드 리포트 · 2026.06.22</p>
+  </section>
+
+  <!-- 아웃트로 -->
+  <section class="card outro">
+    <div class="card-inner">
+      <h2>전체 리포트는<br>웹에서 더 자세히</h2>
+      <p>매일 오전 10시, 새 트렌드가 올라와요.</p>
+      <a class="btn" href="../issues/2026-06-22.html">리포트 전체 보기</a>
+    </div>
+  </section>
+
+</div>
+
+<div class="progress" id="progress"></div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const cards = deck.querySelectorAll('.card');
+  const prog = document.getElementById('progress');
+  cards.forEach((_, i) => { const s = document.createElement('span'); if (i === 0) s.className = 'on'; prog.appendChild(s); });
+  const dots = prog.querySelectorAll('span');
+  let raf;
+  deck.addEventListener('scroll', () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const idx = Math.round(deck.scrollLeft / window.innerWidth);
+      dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+    });
+  }, { passive: true });
+</script>
+<script src="../assets/cursor.js"></script>
+</body></html>
