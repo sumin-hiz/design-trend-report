@@ -28,24 +28,14 @@
 <main class="wrap">
   <section class="past-section">
     <h2>지난 트렌드 보기</h2>
-    <p class="past-sub">달력에서 날짜를 고르거나, 카드를 넘겨 지난 호를 다시 보세요.</p>
-    <div class="past-grid">
-      <div class="calendar">
-        <div class="cal-head">
-          <button id="calPrev" aria-label="이전 달">‹</button>
-          <strong id="calLabel"></strong>
-          <button id="calNext" aria-label="다음 달">›</button>
-        </div>
-        <div class="cal-grid" id="calDow"></div>
-        <div class="cal-grid" id="calGrid"></div>
+    <div class="photo-cal">
+      <div class="pcal-head">
+        <button id="calPrev" aria-label="이전 달">‹</button>
+        <strong id="calLabel"></strong>
+        <button id="calNext" aria-label="다음 달">›</button>
       </div>
-      <div class="carousel">
-        <div class="carousel-track" id="carTrack"></div>
-        <div class="carousel-btns">
-          <button id="carPrev">‹ 이전</button>
-          <button id="carNext">다음 ›</button>
-        </div>
-      </div>
+      <div class="pcal-dow" id="calDow"></div>
+      <div class="pcal-grid" id="calGrid"></div>
     </div>
   </section>
 </main>
@@ -75,14 +65,13 @@ const todayStr = (() => { const d = new Date(); return `${d.getFullYear()}-${pad
   }
 })();
 
-// 달력
+// 사진 달력
 const DOW = ["일","월","화","수","목","금","토"];
 let viewYear, viewMonth;
 (function initCal() {
   const base = ISSUES.length ? ISSUES[0].date.split("-") : todayStr.split("-");
   viewYear = +base[0]; viewMonth = +base[1] - 1;
-  const dow = document.getElementById("calDow");
-  dow.innerHTML = DOW.map(d => `<div class="cal-dow">${d}</div>`).join("");
+  document.getElementById("calDow").innerHTML = DOW.map(d => `<span>${d}</span>`).join("");
   renderCalendar();
 })();
 function renderCalendar() {
@@ -90,29 +79,21 @@ function renderCalendar() {
   const first = new Date(viewYear, viewMonth, 1).getDay();
   const days = new Date(viewYear, viewMonth+1, 0).getDate();
   let cells = "";
-  for (let i = 0; i < first; i++) cells += `<div class="cal-day"></div>`;
+  for (let i = 0; i < first; i++) cells += `<div class="pcal-cell"></div>`;
   for (let d = 1; d <= days; d++) {
     const ds = `${viewYear}-${pad(viewMonth+1)}-${pad(d)}`;
-    if (issueByDate.has(ds)) cells += `<div class="cal-day has-issue" onclick="location.href='issues/${ds}.html'">${d}</div>`;
-    else cells += `<div class="cal-day">${d}</div>`;
+    const it = issueByDate.get(ds);
+    if (it) {
+      cells += `<div class="pcal-cell"><a class="pcal-day" href="issues/${ds}.html" title="${it.title || ds}">` +
+               `<img src="${it.cover}" alt="" onerror="this.remove()"><span class="num">${d}</span></a></div>`;
+    } else {
+      cells += `<div class="pcal-cell"><span class="num empty">${d}</span></div>`;
+    }
   }
   document.getElementById("calGrid").innerHTML = cells;
 }
 document.getElementById("calPrev").onclick = () => { if (--viewMonth < 0) { viewMonth = 11; viewYear--; } renderCalendar(); };
 document.getElementById("calNext").onclick = () => { if (++viewMonth > 11) { viewMonth = 0; viewYear++; } renderCalendar(); };
-
-// 카드 캐러셀
-(function renderCarousel() {
-  const track = document.getElementById("carTrack");
-  if (!ISSUES.length) { track.innerHTML = `<div class="empty-state">아직 지난 호가 없어요.</div>`; return; }
-  track.innerHTML = ISSUES.map(i => `
-    <a class="card" href="issues/${i.date}.html">
-      <img src="${i.cover}" alt="" onerror="this.style.visibility='hidden'">
-      <div class="card-body"><div class="card-date">${i.date}</div><div class="card-title">${i.title}</div></div>
-    </a>`).join("");
-})();
-document.getElementById("carPrev").onclick = () => document.getElementById("carTrack").scrollBy({left: -256, behavior:"smooth"});
-document.getElementById("carNext").onclick = () => document.getElementById("carTrack").scrollBy({left: 256, behavior:"smooth"});
 </script>
 <script src="assets/cursor.js"></script>
 </body>
