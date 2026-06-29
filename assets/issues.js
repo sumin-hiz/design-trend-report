@@ -2,6 +2,7 @@
    /디자인트렌드 비서가 새 리포트를 만들 때 아래 ISSUES_START~END 사이에 항목을 추가한다. */
 /* ISSUES_START */
 window.ISSUES = [
+  { date: "2026-06-29", title: "흐르는 크롬, 도파민 컬러의 시대", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/a309c7240332059.693c02356a66b.jpg", summary: "표현적 디스플레이·크롬 타이포, 리퀴드 메탈·Y3K, WebGL 3D·게이미피케이션, 도파민 컬러의 의외의 조합." },
   { date: "2026-06-25", title: "거친 매력의 부상, 모노스페이스 × 네오브루탈리즘", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/0746a7240332059.693c02356cd9d.jpg", summary: "모노스페이스·초대형 타이포, 리소그래프 질감, 네오브루탈리즘·스크롤 애니메이션, 팬톤 2026 올해의 색 클라우드 댄서." },
   { date: "2026-06-24", title: "움직이는 타이포, 3D 초현실의 부상", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/a309c7240332059.693c02356a66b.jpg", summary: "키네틱 타이포·가변폰트(실시간 굵기 데모), 3D 초현실+AI 이미지, 에이전트형 UI·다크모드, 스모키 주얼톤·오라 그라데이션." },
   { date: "2026-06-23", title: "세리프의 귀환, 벤토 그리드의 시대", cover: "https://cdn.prod.website-files.com/674703d2af36853f65da67e0/696dfb49d5208be9947cc7bf_Expressive%20Serif%20fonts.avif", summary: "에디토리얼 세리프 부활(Fraunces·Instrument Serif), 안티 디자인·손그림, 벤토 그리드·글래스모피즘 2.0, 모카+디지털 라임 컬러." },
