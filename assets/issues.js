@@ -2,6 +2,7 @@
    /디자인트렌드 비서가 새 리포트를 만들 때 아래 ISSUES_START~END 사이에 항목을 추가한다. */
 /* ISSUES_START */
 window.ISSUES = [
+  { date: "2026-07-06", title: "빽빽한 콘덴스드 고딕, 멤피스의 귀환", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/035c2b240332059.693c02356ae50.jpg", summary: "콘덴스드 고딕(좁고 길쭉한 대문자), 멤피스·볼드 지오메트릭, 접근성·지속가능 웹, 말차 그린·일렉트릭 라임 컬러." },
   { date: "2026-07-03", title: "그루비 레트로, 어긋난 그리드의 매력", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/efbb9b240332059.693c02356804b.jpg", summary: "70년대 그루비·버블 레터, 손그림·두들 일러스트, 깨진 그리드·커스텀 커서, 버터옐로·코발트·에그플랜트 컬러." },
   { date: "2026-07-01", title: "일그러진 글자, 콜라주 맥시멀리즘", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/14dde3240332059.693c02356d906.jpg", summary: "글리치·왜곡 타이포, 콜라주·컷아웃 맥시멀리즘·듀오톤, 과장된 위계·탐험형 내비, 디지털 라벤더·세이지·선셋 컬러." },
   { date: "2026-06-29", title: "흐르는 크롬, 도파민 컬러의 시대", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/a309c7240332059.693c02356a66b.jpg", summary: "표현적 디스플레이·크롬 타이포, 리퀴드 메탈·Y3K, WebGL 3D·게이미피케이션, 도파민 컬러의 의외의 조합." },
