@@ -2,6 +2,7 @@
    /디자인트렌드 비서가 새 리포트를 만들 때 아래 ISSUES_START~END 사이에 항목을 추가한다. */
 /* ISSUES_START */
 window.ISSUES = [
+  { date: "2026-07-21", title: "블랙레터의 귀환, 몽환적 소프트 글로우", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/a309c7240332059.693c02356a66b.jpg", summary: "블랙레터·고딕·여린 손글씨, 그레이니 블러·소프트 글로우(몽환), UX 라이팅·적응형 개인화, 파우더 블루·차분한 파스텔." },
   { date: "2026-07-13", title: "픽셀 노스탤지어, 버건디의 시대", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/64bd3c240332059.693c02356a1db.jpg", summary: "픽셀·비트맵·와이드 타이포, 보태니컬·아이소메트릭 3D, AI 챗 우선(대화형) 인터페이스, 버건디·토마토 레드 컬러." },
   { date: "2026-07-06", title: "빽빽한 콘덴스드 고딕, 멤피스의 귀환", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/035c2b240332059.693c02356ae50.jpg", summary: "콘덴스드 고딕(좁고 길쭉한 대문자), 멤피스·볼드 지오메트릭, 접근성·지속가능 웹, 말차 그린·일렉트릭 라임 컬러." },
   { date: "2026-07-03", title: "그루비 레트로, 어긋난 그리드의 매력", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/efbb9b240332059.693c02356804b.jpg", summary: "70년대 그루비·버블 레터, 손그림·두들 일러스트, 깨진 그리드·커스텀 커서, 버터옐로·코발트·에그플랜트 컬러." },
