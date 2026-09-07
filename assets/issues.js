@@ -2,6 +2,7 @@
    /디자인트렌드 비서가 새 리포트를 만들 때 아래 ISSUES_START~END 사이에 항목을 추가한다. */
 /* ISSUES_START */
 window.ISSUES = [
+  { date: "2026-09-07", title: "다크 아카데미아, 무디한 가을의 미학", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/050082240332059.693c023569b3f7.jpg", summary: "클래식 리터러리 세리프, 다크 아카데미아·코티지코어 그래픽, 무디한 다크 모드·에디토리얼 웹, 포레스트그린·버건디·골드 팔레트." },
   { date: "2026-07-28", title: "손으로 만든 질감, 촉각의 귀환", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/0746a7240332059.693c02356cd9d.jpg", summary: "이클렉틱 타입 믹싱·맥시멀 세리프, 손으로 만든 촉각 질감(자수·클레이), 스큐어모피즘 2.0·클레이모피즘, 애프리콧·앰버 웜글로우." },
   { date: "2026-07-21", title: "블랙레터의 귀환, 몽환적 소프트 글로우", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/a309c7240332059.693c02356a66b.jpg", summary: "블랙레터·고딕·여린 손글씨, 그레이니 블러·소프트 글로우(몽환), UX 라이팅·적응형 개인화, 파우더 블루·차분한 파스텔." },
   { date: "2026-07-13", title: "픽셀 노스탤지어, 버건디의 시대", cover: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/64bd3c240332059.693c02356a1db.jpg", summary: "픽셀·비트맵·와이드 타이포, 보태니컬·아이소메트릭 3D, AI 챗 우선(대화형) 인터페이스, 버건디·토마토 레드 컬러." },
